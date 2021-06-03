@@ -39,18 +39,27 @@ class Queue {
 
   dequeue() {
     // dequeue is the same as 'shift' in a regular linked list
+    if (this.size === 0) {
+      throw new Error('Cannot remove node from the start - the Queue is empty')
+    } 
+    let removedNode = this.first;
+    this.first = removedNode.next;
+    this.size -= 1;
+    return removedNode.val;
   }
 
   /** peek(): return the value of the first node in the queue. */
 
   peek() {
-
+    if (this.size === 0) return undefined;
+    return this.first.val;
   }
 
   /** isEmpty(): return true if the queue is empty, otherwise false */
 
   isEmpty() {
-
+    if (this.size === 0) return true;
+    return false;
   }
 }
 
